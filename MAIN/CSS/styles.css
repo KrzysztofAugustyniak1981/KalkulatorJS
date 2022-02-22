@@ -1,0 +1,52 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-color: rgb(111, 138, 189);
+}
+
+.main {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+    grid-template-columns: repeat(4,100px);
+    grid-template-rows: minmax(120px, auto) repeat(5,100px);
+}
+
+.main > button {
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid white;
+    background-color: rgba(255, 255, 255, 0.75);
+}
+
+.main > button:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.screen {
+    grid-column: 1 / -1;
+    background-color: rgba(0, 0, 0, .75);
+    color: whitesmoke;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.old-view {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 1.6rem;
+}
+
+.new-view {
+    color: white;
+    font-size: 3rem;
+}
