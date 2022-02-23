@@ -1,3 +1,6 @@
+// Niestety nie skączyłem zadania zabrakło mi czasu ale mam nadzieje że ten kod coś o mnie powie
+
+
 class Calculator {
   constructor(previousOperandTextElement, currentOperandTextElement) {
     this.previousOperandTextElement = previousOperandTextElement
@@ -30,6 +33,28 @@ class Calculator {
         this.previousOperand = this.currentOperand
         this.currentOperand = ''
     }
+    
+    factorialize() {
+        
+        let num = parseFloat(this.currentOperand)
+        if (Number.isInteger(num)) {
+        
+        function factorializen() {
+            if (num === 0 || num === 1)
+              return 1;
+            for (var i = num - 1; i >= 1; i--) {
+              num *= i;
+            }
+            return num;
+          }
+        
+        this.currentOperand = factorializen()
+        this.previousOperand = ''
+        }
+        else 
+        this.currentOperandTextElement = document.write('Tylko liczby całkowite')
+        this.previousOperand = ''
+    }
 
     compute() {
         let computation
@@ -52,7 +77,6 @@ class Calculator {
             case '^':
                 computation = Math.pow(prev, current)
                 break
-            case '!':
                 
             default:
                 return
@@ -97,6 +121,7 @@ const operationButtons = document.querySelectorAll(".operation")
 const allClearButton = document.querySelector(".AC")
 const deleteButton = document.querySelector(".DEL")
 const equalsButton = document.querySelector(".result")
+const factorialButton = document.querySelector(".factorial")
 const previousOperandTextElement = document.querySelector(".old-view")
 const currentOperandTextElement = document.querySelector(".new-view")
 
@@ -118,6 +143,11 @@ operationButtons.forEach(button => {
 
 equalsButton.addEventListener('click', button => {
     calculator.compute()
+    calculator.updateDisplay()
+})
+
+factorialButton.addEventListener('click', button => {
+    calculator.factorialize()
     calculator.updateDisplay()
 })
 
